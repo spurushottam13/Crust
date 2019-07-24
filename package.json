@@ -1,0 +1,23 @@
+{
+  "name": "crust",
+  "version": "1.0.0",
+  "description": "",
+  "main": "crust.js",
+  "dependencies": {
+    "firebase-admin": "^8.2.0",
+    "lowdb": "^1.0.0",
+    "puppeteer": "^1.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node crust.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://spurushottam13@bitbucket.org/spurushottam13/crust.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/spurushottam13/crust#readme"
+}
