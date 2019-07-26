@@ -1,26 +1,29 @@
 console.log("sp13 || Level: Crust ");
 
+//+++++======{ MODULE IMPORTS  }============================================================||
+
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const puppeteer = require('puppeteer');
 var admin = require("firebase-admin");
 var serviceAccount = require('./firebase/server-r-firebase-adminsdk-d7x0j-fd0b0062a8.json');
 
+
+//+++++======{ MODULE INIT  }================================================================||
+
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://server-r.firebaseio.com"
 });
+var crustDB = admin.database();
 
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 db.defaults({ stack: [] })
     .write()
-
-var serverRdb = admin.database();
-
-
 var dataToPush
 
+//+++++======{ CRUST REVOLVE  }=============================================================||
 var crustRevolve = function(){ puppeteer.launch({ 
     headless: false,
     env: {
@@ -53,7 +56,7 @@ var crustRevolve = function(){ puppeteer.launch({
             return await new Promise(function(resolve, reject) {
                 Array.from(document.getElementsByTagName('a')).map(a => stack.add(a.href));
                 setInterval(function() {
-                  counter = counter + 1 
+                    counter = counter + 1 
                     window.scrollTo(0, document.body.scrollHeight)
                     Array.from(document.getElementsByTagName('a')).map(a => stack.add(a.href));
                     console.log("|| ", stack.size)
@@ -68,7 +71,7 @@ var crustRevolve = function(){ puppeteer.launch({
         console.log("Scrapped ", await list.length)
         var timeStamp = new Date().getTime()
         dataToPush = list
-        var crust = serverRdb.ref("crust/" + timeStamp);
+        var crust = crustDB.ref("crust/" + timeStamp);
         crust.set(dataToPush, function(err) {
             if (err) {
                 db.get('stack')
