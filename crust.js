@@ -17,11 +17,11 @@ db.defaults({ stack: [] })
     .write()
 
 var serverRdb = admin.database();
-var crust = serverRdb.ref("crust/");
+
 
 var dataToPush
 
-puppeteer.launch({ 
+var crustRevolve = function(){ puppeteer.launch({ 
     headless: false,
     env: {
       TZ: 'Asia/Kolkata',
@@ -49,13 +49,15 @@ puppeteer.launch({
         const list = await page.evaluate(async() => {
             var temp = []
             var stack = new Set()
+            var counter = 0
             return await new Promise(function(resolve, reject) {
                 Array.from(document.getElementsByTagName('a')).map(a => stack.add(a.href));
                 setInterval(function() {
+                  counter = counter + 1 
                     window.scrollTo(0, document.body.scrollHeight)
                     Array.from(document.getElementsByTagName('a')).map(a => stack.add(a.href));
                     console.log("|| ", stack.size)
-                    if (stack.size > 450) { //500 limit
+                    if (counter > 10) {  // Time = counter x 4 sec
                         console.log("Stack size: ", stack.size, temp)
                         temp = Array.from(stack)
                         resolve(temp)
@@ -63,9 +65,11 @@ puppeteer.launch({
                 }, 4000)
             })
         });
-        console.log("This is", await list.length)
+        console.log("Scrapped ", await list.length)
+        var timeStamp = new Date().getTime()
         dataToPush = list
-        crust.push(dataToPush, function(err) {
+        var crust = serverRdb.ref("crust/" + timeStamp);
+        crust.set(dataToPush, function(err) {
             if (err) {
                 db.get('stack')
                     .push(Array.from(dataToPush))
@@ -87,3 +91,7 @@ puppeteer.launch({
 
 
 })
+}
+
+
+module.exports = crustRevolve
