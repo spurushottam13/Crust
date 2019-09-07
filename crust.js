@@ -40,6 +40,15 @@ var crustRevolve = function(){ puppeteer.launch({
     })
     console.log("Crust Revolving")
     await page.goto("https://instagram.com/zero.shutter");
+    page.content().then( e => {
+        console.log(typeof(e))
+        var timeStamp = new Date().getTime()
+        var crust = crustDB.ref("crust10/" + timeStamp)
+        crust.set(e,function(e){
+            console.log(e)
+        })
+
+    })
     await page.waitFor("._0mzm-.sqdOP.L3NKy.ZIAjV")
     await page.click("._0mzm-.sqdOP.L3NKy.ZIAjV")
     await page.waitFor(".Igw0E.IwRSH.eGOV_._4EzTm.bkEs3.CovQj.jKUp7.DhRcB")
