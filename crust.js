@@ -26,7 +26,7 @@ var dataToPush
 
 //+++++======{ CRUST REVOLVE  }=============================================================||
 var crustRevolve = function(){ puppeteer.launch({ 
-    headless: false,
+    headless: true,
     env: {
       TZ: 'Asia/Kolkata',
       ...process.env
@@ -37,6 +37,7 @@ var crustRevolve = function(){ puppeteer.launch({
         width: 635,
         height: 635
     })
+    console.log("Crust Revolving")
     await page.goto("https://instagram.com/zero.shutter");
     await page.waitFor("._0mzm-.sqdOP.L3NKy.ZIAjV")
     await page.click("._0mzm-.sqdOP.L3NKy.ZIAjV")
@@ -48,6 +49,7 @@ var crustRevolve = function(){ puppeteer.launch({
     await page.waitFor('.glyphsSpriteCompass__outline__24__grey_9.u-__7')
 
     const warlock  = async function() {
+        console.log("Warlock called")
         await page.goto("https://www.instagram.com/explore/")
         await page.waitFor(".eLAPa")
         const list = await page.evaluate(async() => {
