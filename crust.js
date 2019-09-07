@@ -27,6 +27,7 @@ var dataToPush
 //+++++======{ CRUST REVOLVE  }=============================================================||
 var crustRevolve = function(){ puppeteer.launch({ 
     headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
     env: {
       TZ: 'Asia/Kolkata',
       ...process.env
