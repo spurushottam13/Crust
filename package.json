@@ -4,6 +4,7 @@
   "description": "",
   "main": "crust.js",
   "dependencies": {
+    "battery-level": "^3.0.0",
     "firebase-admin": "^8.2.0",
     "lowdb": "^1.0.0",
     "puppeteer": "^1.18.1"
@@ -11,7 +12,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node crust.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

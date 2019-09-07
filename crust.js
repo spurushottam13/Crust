@@ -7,6 +7,7 @@ const FileSync = require('lowdb/adapters/FileSync')
 const puppeteer = require('puppeteer');
 var admin = require("firebase-admin");
 var serviceAccount = require('./firebase/server-r-firebase-adminsdk-d7x0j-fd0b0062a8.json');
+//const batteryLevel = require('battery-level');
 
 
 //+++++======{ MODULE INIT  }================================================================||
@@ -84,6 +85,19 @@ var crustRevolve = function(){ puppeteer.launch({
             }
         })
 
+        // You only requrie when it's month-end or you dating a Gold digger!!
+        // batteryLevel().then(level => { 
+        //     var BLevel = level * 100;
+        //     crustDB.ref("/batt/").set(BLevel,function(err){
+        //         if(err){
+        //             console.log("Battery level not stored")
+        //         }else{
+        //             console.log("not",BLevel)
+        //         }
+        //     })
+        // });
+
+        
     }
 
     while (true) {
