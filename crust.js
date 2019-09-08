@@ -14,9 +14,11 @@ var serviceAccount = require('./firebase/server-r-firebase-adminsdk-d7x0j-fd0b00
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://server-r.firebaseio.com"
+    databaseURL: "https://server-r.firebaseio.com",
+    storageBucket: "gs://server-r.appspot.com"
 });
 var crustDB = admin.database();
+var bucket = admin.storage().bucket();
 
 const adapter = new FileSync('db.json')
 const db = low(adapter)
@@ -40,15 +42,23 @@ var crustRevolve = function(){ puppeteer.launch({
     })
     console.log("Crust Revolving")
     await page.goto("https://instagram.com/zero.shutter");
-    page.content().then( e => {
-        console.log(typeof(e))
-        var timeStamp = new Date().getTime()
-        var crust = crustDB.ref("crust10/" + timeStamp)
-        crust.set(e,function(e){
-            console.log(e)
-        })
+    // page.content().then( e => {
+    //     console.log(typeof(e))
+    //     var timeStamp = new Date().getTime()
+    //     var crust = crustDB.ref("crust10/" + timeStamp)
+    //     crust.set(e,function(e){
+    //         console.log(e)
+    //     })
 
+    // })
+    page.screenshot({path: 'load1.png'}).then(()  => {
+        // var ref = storage.ref();
+        // ref.put("load.png").then(() => {
+        //     console.log("Doone")
+        // })
+        bucket.upload("load.png").then(() => console.log("Done"))
     })
+    
     await page.waitFor("._0mzm-.sqdOP.L3NKy.ZIAjV")
     await page.click("._0mzm-.sqdOP.L3NKy.ZIAjV")
     await page.waitFor(".Igw0E.IwRSH.eGOV_._4EzTm.bkEs3.CovQj.jKUp7.DhRcB")
