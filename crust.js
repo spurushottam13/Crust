@@ -51,12 +51,12 @@ var crustRevolve = function(){ puppeteer.launch({
     //     })
 
     // })
-    page.screenshot({path: 'load1.png'}).then(()  => {
+    page.screenshot({path: 'iop.png'}).then(()  => {
         // var ref = storage.ref();
         // ref.put("load.png").then(() => {
         //     console.log("Doone")
         // })
-        bucket.upload("load.png").then(() => console.log("Done"))
+        bucket.upload("iop.png").then(() => console.log("Done"))
     })
     
     await page.waitFor("._0mzm-.sqdOP.L3NKy.ZIAjV")
