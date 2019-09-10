@@ -51,6 +51,7 @@ var crustRevolve = function(){ puppeteer.launch({
     //     })
 
     // })
+    await page.waitFor(4000)
     page.screenshot({path: 'iop.png'}).then(()  => {
         // var ref = storage.ref();
         // ref.put("load.png").then(() => {
@@ -58,10 +59,14 @@ var crustRevolve = function(){ puppeteer.launch({
         // })
         bucket.upload("iop.png").then(() => console.log("Done"))
     })
-    
-    await page.waitFor("._0mzm-.sqdOP.L3NKy.ZIAjV")
-    await page.click("._0mzm-.sqdOP.L3NKy.ZIAjV")
     await page.waitFor(".Igw0E.IwRSH.eGOV_._4EzTm.bkEs3.CovQj.jKUp7.DhRcB")
+    page.screenshot({path: 'iop.png'}).then(()  => {
+        // var ref = storage.ref();
+        // ref.put("load.png").then(() => {
+        //     console.log("Doone")
+        // })
+        bucket.upload("iop.png").then(() => console.log("Done"))
+    })
     await page.type("input[type='text']", "zero.shutter")
     await page.type("input[type='password']", "zeroshutter")
     await page.waitFor(4000)
