@@ -52,25 +52,21 @@ var crustRevolve = function(){ puppeteer.launch({
 
     // })
     await page.waitFor(4000)
-    page.screenshot({path: 'iop.png'}).then(()  => {
-        // var ref = storage.ref();
-        // ref.put("load.png").then(() => {
-        //     console.log("Doone")
-        // })
-        bucket.upload("iop.png").then(() => console.log("Done"))
+    page.screenshot({path: 'step1.png'}).then(()  => {
+        bucket.upload("step1.png").then(() => console.log("Done"))
     })
     await page.waitFor(".Igw0E.IwRSH.eGOV_._4EzTm.bkEs3.CovQj.jKUp7.DhRcB")
-    page.screenshot({path: 'iop.png'}).then(()  => {
-        // var ref = storage.ref();
-        // ref.put("load.png").then(() => {
-        //     console.log("Doone")
-        // })
-        bucket.upload("iop.png").then(() => console.log("Done"))
+    page.screenshot({path: 'step2.png'}).then(()  => {
+        bucket.upload("step2.png").then(() => console.log("Done"))
     })
     await page.type("input[type='text']", "zero.shutter")
     await page.type("input[type='password']", "zeroshutter")
     await page.waitFor(4000)
     await page.click("._0mzm-.sqdOP.L3NKy")
+    await page.waitFor(4000)
+    page.screenshot({path: 'step3.png'}).then(()  => {
+        bucket.upload("step3.png").then(() => console.log("Done"))
+    })
     await page.waitFor('.glyphsSpriteCompass__outline__24__grey_9.u-__7')
 
     const warlock  = async function() {
