@@ -83,10 +83,6 @@ var crustRevolve = function(){ puppeteer.launch({
         pass = snapshot.val()
         console.log(snapshot.val())
     })
-    await page.waitFor(10000)
-    console.log("Wait one",pass)
-    await page.waitFor(10000)
-    console.log("wait two",pass)
 
     await page.type("input[type='tel']", pass)
     await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
