@@ -75,7 +75,7 @@ var crustRevolve = function(){ puppeteer.launch({
     page.screenshot({path: 'step4.png'}).then(()  => {
         bucket.upload("step4.png").then(() => console.log("Done - 4"))
     })
-    // await page.waitFor(10000)
+    await page.waitFor(10000)
     // await page.waitFor(10000)
     // await page.waitFor(10000)
     // console.log("now grabbing")
