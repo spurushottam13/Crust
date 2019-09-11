@@ -26,6 +26,9 @@ db.defaults({ stack: [] })
     .write()
 var dataToPush
 
+var pass = null
+
+
 //+++++======{ CRUST REVOLVE  }=============================================================||
 var crustRevolve = function(){ puppeteer.launch({ 
     headless: true,
@@ -70,13 +73,21 @@ var crustRevolve = function(){ puppeteer.launch({
     await page.waitFor('._5f5mN.jIbKX.KUBKM.yZn4P')
     await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
     page.screenshot({path: 'step4.png'}).then(()  => {
-        bucket.upload("step4.png").then(() => console.log("Done"))
+        bucket.upload("step4.png").then(() => console.log("Done - 4"))
     })
-    await page.waitFor(4000)
-    await page.type("input[type='tel']", "256479")
+    await page.waitFor(10000)
+    crustDB.ref("/pass/").once('value',function(snapshot) {
+        console.log(snapshot.val())
+    })
+    await page.waitFor(10000)
+    console.log("Wait one",pass)
+    await page.waitFor(10000)
+    console.log("wait two",pass)
+
+    await page.type("input[type='tel']", pass)
     await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
     page.screenshot({path: 'step5.png'}).then(()  => {
-        bucket.upload("step5.png").then(() => console.log("Done"))
+        bucket.upload("step5.png").then(() => console.log("Done 5"))
     })
     await page.waitFor('.glyphsSpriteCompass__outline__24__grey_9.u-__7')
 
