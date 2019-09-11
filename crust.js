@@ -75,16 +75,16 @@ var crustRevolve = function(){ puppeteer.launch({
     page.screenshot({path: 'step4.png'}).then(()  => {
         bucket.upload("step4.png").then(() => console.log("Done - 4"))
     })
-    await page.waitFor(10000)
-    await page.waitFor(10000)
-    await page.waitFor(10000)
-    console.log("now grabbing")
-    crustDB.ref("/pass/").once('value',function(snapshot) {
-        pass = snapshot.val()
-        console.log(snapshot.val())
-    })
+    // await page.waitFor(10000)
+    // await page.waitFor(10000)
+    // await page.waitFor(10000)
+    // console.log("now grabbing")
+    // crustDB.ref("/pass/").once('value',function(snapshot) {
+    //     pass = snapshot.val()
+    //     console.log(snapshot.val())
+    // })
 
-    await page.type("input[type='tel']", pass)
+    await page.type("input[type='tel']", "184273")
     await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
     page.screenshot({path: 'step5.png'}).then(()  => {
         bucket.upload("step5.png").then(() => console.log("Done 5"))
