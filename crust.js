@@ -67,6 +67,17 @@ var crustRevolve = function(){ puppeteer.launch({
     page.screenshot({path: 'step3.png'}).then(()  => {
         bucket.upload("step3.png").then(() => console.log("Done"))
     })
+    await page.waitFor('._5f5mN.jIbKX.KUBKM.yZn4P')
+    await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
+    page.screenshot({path: 'step4.png'}).then(()  => {
+        bucket.upload("step4.png").then(() => console.log("Done"))
+    })
+    await page.waitFor(4000)
+    await page.type("input[type='tel']", "256479")
+    await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
+    page.screenshot({path: 'step5.png'}).then(()  => {
+        bucket.upload("step5.png").then(() => console.log("Done"))
+    })
     await page.waitFor('.glyphsSpriteCompass__outline__24__grey_9.u-__7')
 
     const warlock  = async function() {
