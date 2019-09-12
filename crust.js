@@ -70,30 +70,30 @@ var crustRevolve = function(){ puppeteer.launch({
     page.screenshot({path: 'step3.png'}).then(()  => {
         bucket.upload("step3.png").then(() => console.log("Done"))
     })
-    await page.waitFor('._5f5mN.jIbKX.KUBKM.yZn4P')
-    await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
-    page.screenshot({path: 'step4.png'}).then(()  => {
-        bucket.upload("step4.png").then(() => console.log("Done - 4"))
-    })
-    await page.waitFor(10000)
-    // await page.waitFor(10000)
-    // await page.waitFor(10000)
-    // console.log("now grabbing")
-    // crustDB.ref("/pass/").once('value',function(snapshot) {
-    //     pass = snapshot.val()
-    //     console.log(snapshot.val())
-    // })
-
-    await page.type("input[type='tel']", "184273")
-    await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
-    page.screenshot({path: 'step5.png'}).then(()  => {
-        bucket.upload("step5.png").then(() => console.log("Done 5"))
-    })
+    if (await page.$eval('._5f5mN.jIbKX.KUBKM.yZn4P', {timeout: 3000})){
+        await page.waitFor('._5f5mN.jIbKX.KUBKM.yZn4P')
+        await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
+        page.screenshot({path: 'step4.png'}).then(()  => {
+            bucket.upload("step4.png").then(() => console.log("Done - 4"))
+        })
+        await page.waitFor(10000)   
+        crustDB.ref("/pass/").once('value',function(snapshot) {
+            pass = snapshot.val()
+            console.log(snapshot.val(),pass)
+        }) 
+        await page.type("input[type='tel']", String(pass))
+        await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
+        page.screenshot({path: 'step5.png'}).then(()  => {
+            bucket.upload("step5.png").then(() => console.log("Done 5"))
+        })
+    }    
     await page.waitFor('.glyphsSpriteCompass__outline__24__grey_9.u-__7')
-
     const warlock  = async function() {
         console.log("Warlock called")
         await page.goto("https://www.instagram.com/explore/")
+        page.screenshot({path: 'step6.png'}).then(()  => {
+            bucket.upload("step6.png").then(() => console.log("Done"))
+        })
         await page.waitFor(".eLAPa")
         const list = await page.evaluate(async() => {
             var temp = []
