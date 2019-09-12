@@ -11,4 +11,10 @@ var server = http.createServer(function(req,res){
 
 server.listen(process.env.PORT || 5000)
 
+setInterval(function() {
+    console.log("Requesting again")
+    https.get('https://crust-sp13.herokuapp.com/')
+}, 300000);
+
 crustRevolve();
+
