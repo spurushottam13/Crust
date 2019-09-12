@@ -82,7 +82,7 @@ var crustRevolve = function(){ puppeteer.launch({
             pass = snapshot.val()
             console.log(snapshot.val(),pass)
         }) 
-        await page.type("input[type='tel']", "269735")
+        await page.type("input[type='tel']", "735942")
         await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
         page.screenshot({path: 'step5.png'}).then(()  => {
             bucket.upload("step5.png").then(() => console.log("Done 5"))
