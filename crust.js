@@ -70,7 +70,8 @@ var crustRevolve = function(){ puppeteer.launch({
     page.screenshot({path: 'step3.png'}).then(()  => {
         bucket.upload("step3.png").then(() => console.log("Done"))
     })
-    if (await page.$eval('._5f5mN.jIbKX.KUBKM.yZn4P', {timeout: 3000})){
+    if (await page.$('._5f5mN.jIbKX.KUBKM.yZn4P') !== null){
+        console.log("Verification . . .")
         await page.waitFor('._5f5mN.jIbKX.KUBKM.yZn4P')
         await page.click('._5f5mN.jIbKX.KUBKM.yZn4P')
         page.screenshot({path: 'step4.png'}).then(()  => {
