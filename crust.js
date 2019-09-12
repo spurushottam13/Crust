@@ -96,6 +96,7 @@ var crustRevolve = function(){ puppeteer.launch({
             bucket.upload("step6.png").then(() => console.log("Done"))
         })
         await page.waitFor(".eLAPa")
+        console.log("Here")
         const list = await page.evaluate(async() => {
             var temp = []
             var stack = new Set()
