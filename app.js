@@ -18,4 +18,4 @@ setInterval(function() {
 
 //mantalRevolve()
 //crustRevolve();
-//hits()
+hits()

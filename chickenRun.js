@@ -91,6 +91,7 @@ function getUserData(url) {
 var counter  = 0
 
 function upload(data) {
+    console.log("Uploading . . .")
     var crust = crustDB.ref("mantel/" + data.id);
     crust.set(data, function (err) {
         if (err) {
