@@ -7,7 +7,8 @@
     "battery-level": "^3.0.0",
     "firebase-admin": "^8.2.0",
     "lowdb": "^1.0.0",
-    "puppeteer": "^1.18.1"
+    "puppeteer": "^1.18.1",
+    "user-instagram": "^1.0.4"
   },
   "devDependencies": {},
   "scripts": {

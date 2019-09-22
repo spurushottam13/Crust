@@ -1,0 +1,52 @@
+
+  var arr = ["mango are the best","apple keeps doctor away","koi fruit ka nam hai"]
+var arr2 = ["there is aan asia", "largest weapon maker", "jhon has ike loyree"]
+
+var main = arr
+var flag = true
+function change(){
+  if(main === arr){
+    console.log("Chnage to arr2")
+    main = arr2
+  }else{
+    console.log("Change to arr")
+    main = arr
+  }
+}
+
+
+var index =  0
+console.log(main[index])
+document.getElementById("input").placeholder = ""
+
+window.addEventListener("done", function(){
+  setTimeout(function(){
+    if(index + 1 < main.length){
+      index = index + 1
+      document.getElementById("input").placeholder = ""
+      wrapper(main[index])
+    }else{
+      index = 0
+      document.getElementById("input").placeholder = ""
+      wrapper(main[index])
+    }
+  },1000)  
+})
+
+function wrapper(text){
+  var i = 0;
+  var speed = 50; 
+  txt = text
+  function typeWriter() {
+    if (i < txt.length) {
+      document.getElementById("input").placeholder += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }else{
+      console.log("done")
+      window.dispatchEvent(new CustomEvent("done", {detail: true}))
+    }
+  }
+  typeWriter()
+}
+wrapper("Hello")
