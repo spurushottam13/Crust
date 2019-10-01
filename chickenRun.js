@@ -45,6 +45,7 @@ async function warlock() {
 
 
 function completeCycle(status){
+    console.log("Status line48",status)
     index = index + 1
     let key = Object.keys(stack)[0]
     console.log("Cycle Details -> ",key,index)
@@ -66,7 +67,7 @@ function completeCycle(status){
 function getUserData(url) {
     return new Promise(function(resolve,reject){
         if (url.charAt(26) !== "p") {
-            console.error("Not usable ", url)
+            console.error("Not usable  line 70", url)
             completeCycle(false)
             return
         }
@@ -74,6 +75,7 @@ function getUserData(url) {
         getUserrname(url).then(username => {
             scrapeUserData("https://www.instagram.com/" + username)
                 .then(data => {
+                    console.log("Line 77")
                     upload(data)
                     //console.log(data.id)
                     //console.log("- - - - - - - - - - - - - - - - -")
@@ -82,6 +84,7 @@ function getUserData(url) {
                 .catch(e => {
                     // Error will trigger if the account link provided is false.
                     console.error("URL wrong ", e)
+                    console.log("line 87")
                     completeCycle(false)
                    // process.exit()
                 })
@@ -142,6 +145,7 @@ function getUserrname(url) {
 }
 
 function scrapeUserData(url) {
+    console.log(" Scrapping data from username line 148")
     return new Promise((resolve, reject) => {
         request(url).then(body => {
             var $ = cheerio.load(body)
@@ -152,6 +156,7 @@ function scrapeUserData(url) {
                     .replace("};", "}")
             )
             var graphql = sharedData.entry_data.ProfilePage[0].graphql.user
+            console.log("got data line 159")
             resolve(formatData(graphql))
         }).catch(e => {
             completeCycle(false)
