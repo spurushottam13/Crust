@@ -123,6 +123,8 @@ var shortcode_media
 function getUserrname(url) {
     return new Promise((resolve, reject) => {
         request(url).then(body => {
+            console.log("*******************     B O D Y     ***********************")
+            console.log(body)
             var $ = cheerio.load(body)
             var scripts = $("script[type='text/javascript']")
             var sharedData = JSON.parse(
