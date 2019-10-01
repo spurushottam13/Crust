@@ -159,7 +159,7 @@ function scrapeUserData(url) {
                     .replace("};", "}")
             )
             console.log("got data line 161")
-            console.log( "Data of graphQL ",sharedData)
+            console.log( "Data of graphQL ",sharedData.entry_data.LoginAndSignupPage)
             console.log( Object.keys(sharedData).length,)
             console.log( Object.keys(sharedData.entry_data).length,)
             console.log( Object.keys(sharedData.entry_data.ProfilePage[0]).length,)
