@@ -68,6 +68,7 @@ function getUserData(url) {
     return new Promise(function(resolve,reject){
         if (url.charAt(26) !== "p") {
             console.error("Not usable  line 70", url)
+            console.log("::::::::::::::::::::::::::LINE 71 -false")
             completeCycle(false)
             return
         }
@@ -85,6 +86,7 @@ function getUserData(url) {
                     // Error will trigger if the account link provided is false.
                     console.error("URL wrong ", e)
                     console.log("line 87")
+                    console.log("::::::::::::::::::::::::::LINE 89 -false")
                     completeCycle(false)
                    // process.exit()
                 })
@@ -139,6 +141,7 @@ function getUserrname(url) {
             } else {
                 console.log("Unhandle Error -URL ")
             }
+            console.log("::::::::::::::::::::::::::LINE 144 -false")
             completeCycle(false)
         })
     })
@@ -159,6 +162,7 @@ function scrapeUserData(url) {
             console.log("got data line 159")
             resolve(formatData(graphql))
         }).catch(e => {
+            console.log("::::::::::::::::::::::::::LINE 162 -false")
             completeCycle(false)
         })
     })
