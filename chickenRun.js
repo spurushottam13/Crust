@@ -151,7 +151,6 @@ function scrapeUserData(url) {
     console.log(" Scrapping data from username line 148")
     return new Promise((resolve, reject) => {
         request(url).then(body => {
-            console.log(body)
             var $ = cheerio.load(body)
             var scripts = $("script[type='text/javascript']")
             var sharedData = JSON.parse(
@@ -159,7 +158,15 @@ function scrapeUserData(url) {
                     .replace("window._sharedData = ", "")
                     .replace("};", "}")
             )
-            var graphql = sharedData.entry_data.ProfilePage[0].graphql.user
+            console.log("got data line 161")
+            console.log( "Data of graphQL ",
+                Object.keys(sharedData).length,
+                Object.keys(sharedData.entry_data).length,
+                Object.keys(sharedData.entry_data.ProfilePage[0]).length,
+                Object.keys(sharedData.entry_data.ProfilePage[0].graphql).length,
+                Object.keys(sharedData.entry_data.ProfilePage[0].graphql.user).length
+            )
+            var graphql = sharedData.entry_data.ProfilePage[0].graphql.user || "888"
             console.log("got data line 159")
             resolve(formatData(graphql))
         }).catch(e => {
@@ -170,6 +177,7 @@ function scrapeUserData(url) {
 }
 
 function formatData(graphql) {
+    console.log("Format data",formatData)
     return {
         "profileLink": "https://www.instagram.com/".concat(graphql.username),
         "subscriberCount": graphql.edge_followed_by.count,
